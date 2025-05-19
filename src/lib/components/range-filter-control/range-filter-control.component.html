@@ -1,0 +1,11 @@
+<div class="slider-container range-filter-control">
+    <ngx-slider
+        class="custom-slider"
+        [(value)]="rangeLow"
+        [(highValue)]="rangeHigh"
+        [options]="{
+            floor: rangeFloor,
+            ceil: rangeCeil
+        }"
+    ></ngx-slider>
+</div>

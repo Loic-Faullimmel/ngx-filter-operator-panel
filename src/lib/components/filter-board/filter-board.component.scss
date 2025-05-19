@@ -1,0 +1,22 @@
+:host {
+    header,
+    main {
+        margin: 1.5rem;
+    }
+		.chevron {
+			position: relative;
+			width: 1.5em;
+			vertical-align: text-bottom;
+			display: inline-flex;
+			justify-content: center;
+		}
+
+		.chevron:after {
+			content: '\276f'; // CSS code for : '❯'
+			transform: rotate(90deg);
+		}
+
+		.chevron-up:after {
+			transform: rotate(-90deg);
+		}
+}

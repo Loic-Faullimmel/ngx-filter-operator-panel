@@ -1,0 +1,17 @@
+<div class="label-filter-control">
+    <!-- The select/unselect 'All' label -->
+    <app-filter-label-checkbox
+        *ngIf="filterControl.properties?.size > 0"
+        [title]="messages.all"
+        [checked]="isAllLabelsChecked()"
+        (checkEvent)="toggleAllLabels()"
+    ></app-filter-label-checkbox>
+
+    <!-- Dynamic filter labels -->
+    <app-filter-label-checkbox
+        *ngFor="let property of filterControl.properties"
+        [title]="property"
+        [checked]="isLabelChecked(property)"
+        (checkEvent)="toggleLabel($event, property)"
+    ></app-filter-label-checkbox>
+</div>

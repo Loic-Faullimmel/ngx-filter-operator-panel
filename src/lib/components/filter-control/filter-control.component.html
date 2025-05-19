@@ -1,0 +1,23 @@
+<div class="filter-control">
+    <p *ngIf="!isTextEmpty(filterControl.title)">
+        {{ filterControl.title + ':' }}
+    </p>
+
+    <!-- Filter type switcher -->
+    <div *ngIf="!isFilterEmpty()">
+        <!-- LABEL type -->
+        <app-label-filter-control
+            *ngIf="isLabelType()"
+            [filterControl]="filterControl"
+        ></app-label-filter-control>
+
+        <!-- RANGE type -->
+        <app-range-filter-control
+            *ngIf="isRangeType()"
+            [filterControl]="filterControl"
+        ></app-range-filter-control>
+    </div>
+
+    <!-- Global type empty filter -->
+    <em *ngIf="isFilterEmpty()">{{ messages.unavailableFilter }}</em>
+</div>

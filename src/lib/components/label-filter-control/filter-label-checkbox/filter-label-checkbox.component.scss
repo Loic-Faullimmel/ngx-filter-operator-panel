@@ -1,0 +1,43 @@
+// Initial style
+input {
+    display: none;
+}
+
+label {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    white-space: nowrap;
+    min-width: 100px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 14px;
+    color: unset;
+    margin: 0;
+    padding: 0.75em;
+    line-height: normal;
+    border: 1px solid #ddd;
+    background-color: transparent;
+
+    // Default / unchecked style
+    &:after {
+        font-family: 'Font Awesome 5 Pro';
+        font-weight: 900;
+        content: '\f00c';
+
+        display: none;
+        margin-left: auto;
+        padding-left: 0.75em;
+    }
+}
+
+// Checked style
+label.checked {
+    color: var(--success);
+    border-color: var(--success);
+
+    &:after {
+        display: block;
+    }
+}

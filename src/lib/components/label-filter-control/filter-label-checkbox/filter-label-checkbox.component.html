@@ -1,0 +1,10 @@
+<div>
+    <label [class.checked]="checked">
+        <input
+            type="checkbox"
+            [(ngModel)]="checked"
+            (ngModelChange)="toggleEmit()"
+        />
+        {{ title }}
+    </label>
+</div>

@@ -1,0 +1,53 @@
+<a (click)="close()" class="small-cross-content top-right-close-cross"></a>
+
+<header>
+  <div class="border-bottom border-bottom-title-container border-red">
+    <h4>{{ title }}</h4>
+  </div>
+</header>
+
+<main>
+  <div *ngIf="isLoading" class="spinner-border" role="status">
+    <span class="sr-only">...</span>
+  </div>
+
+  <div *ngIf="!isLoading">
+		<!-- Filter list -->
+    <ng-container *ngFor="let filterControl of filterControls | filterShowMoreSection: false">
+      <app-filter-control [filterControl]="filterControl"></app-filter-control>
+    </ng-container>
+
+		<!-- Show more section -->
+    <div *ngIf="isAnyShowMoreControls" class="mb-2">
+      <a href (click)="toggleShowMoreSection(); false" class="d-inline-block">
+        <p *ngIf="showShowMoreSection">
+          <span>{{ messages.showLess }}</span
+          ><span class="chevron chevron-up"></span>
+        </p>
+        <p *ngIf="!showShowMoreSection">
+          <span>{{ messages.showMore }}</span
+          ><span class="chevron chevron-down"></span>
+        </p>
+      </a>
+      <div *ngIf="showShowMoreSection">
+        <ng-container *ngFor="let filterControl of filterControls | filterShowMoreSection: true">
+          <app-filter-control [filterControl]="filterControl"></app-filter-control>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="modal-footer flex-between">
+    <!-- Cancel button -->
+    <button class="btn btn-outline-secondary bg-transparent" type="button" (click)="reset(); close()">
+      {{ messages.reset }}
+    </button>
+
+    <!-- Submit button -->
+    <button class="btn btn-primary" type="submit" (click)="submit(); close()">
+      {{ messages.apply }}
+    </button>
+  </div>
+</footer>
